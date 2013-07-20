@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+#ppi file1 file2 year1 year2 dim1 dim2 
+from sys import argv
+#odir = 'output'
+pr1, pr2, year1, year2, row, col = argv[1], argv[2], int(argv[3]), int(argv[4]), int(argv[5]), int(argv[6])
+odir  = argv[7]
+ta1, ta2 = pr1.replace('pr_', 'tas_'), pr2.replace('pr_', 'tas_')
+
+Awc, Lat = rd(lat), rd(lat)
+        for row in rows:
+            pr = conv_bip(prdata, odir, dims, row)
+            ta = conv_bip(tadata, odir, dims, row)
+            for col in cols:
+                if Awc[row, col] == 0 or Awc[row, col] < -9900.: 
+                    out.write(fvalue.data)
+                    out1.write(fvalue.data)
+                    continue
+                pdsi, cal = pdsi_core(pr[:,col], ta[:, col], Awc[row, col], Lat[row, col], years)
+                out.write(pdsi.data)
+                out1.write(cal.data)
+        out.close()
+        out1.close()
+
+
